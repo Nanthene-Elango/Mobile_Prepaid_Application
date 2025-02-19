@@ -1,0 +1,201 @@
+{
+    "plans": [
+      {
+        "planid": 1,
+        "category": "Popular",
+        "data": "2GB/day",
+        "validity": "28 days",
+        "price": 299
+      },
+      {
+        "planid": 2,
+        "category": "Popular",
+        "data": "3GB/day",
+        "validity": "28 days",
+        "price": 399
+      },
+      {
+        "planid": 3,
+        "category": "Data",
+        "data": "10GB",
+        "validity": "30 days",
+        "price": 99
+      },
+      {
+        "planid": 4,
+        "category": "Data",
+        "data": "50GB",
+        "validity": "30 days",
+        "price": 361
+      },
+      {
+        "planid": 5,
+        "category": "Data",
+        "data": "1GB/day",
+        "validity": "30 days",
+        "price": 211
+      },
+      {
+        "planid": 6,
+        "category": "Data",
+        "data": "15GB",
+        "validity": "30 days",
+        "price": 181
+      },
+      {
+        "planid": 7,
+        "category": "Data",
+        "data": "12GB",
+        "validity": "30 days",
+        "price": 161
+      },
+      {
+        "planid": 8,
+        "category": "Data",
+        "data": "1GB",
+        "validity": "Existing",
+        "price": 149
+      },
+      {
+        "planid": 9,
+        "category": "Data",
+        "data": "6GB",
+        "validity": "30 days",
+        "price": 121
+      },
+      {
+        "planid": 10,
+        "category": "Data",
+        "data": "Unlimited",
+        "validity": "2 Days",
+        "price": 99
+      },
+      {
+        "planid": 11,
+        "category": "Data",
+        "data": "5GB",
+        "validity": "7 days",
+        "price": 77
+      },
+      {
+        "planid": 12,
+        "category": "Data",
+        "data": "Unlimited",
+        "validity": "1 days",
+        "price": 49
+      },
+      {
+        "planid": 13,
+        "category": "Data",
+        "data": "2GB",
+        "validity": "1 days",
+        "price": 33
+      },
+      {
+        "planid": 14,
+        "category": "Data",
+        "data": "1.5GB",
+        "validity": "1 days",
+        "price": 26
+      },
+      {
+        "planid": 15,
+        "category": "Data",
+        "data": "1GB",
+        "validity": "1 days",
+        "price": 22
+      },
+      {
+        "planid": 16,
+        "category": "Data",
+        "data": "Unlimited",
+        "validity": "1 hour",
+        "price": 11
+      },
+      {
+        "planid": 17,
+        "category": "Validity",
+        "data": "1.5GB/day",
+        "validity": "365 days",
+        "price": 999
+      },
+      {
+        "planid": 18,
+        "category": "Validity",
+        "data": "500MB/day",
+        "validity": "56 days",
+        "price": 179
+      },
+      {
+        "planid": 19,
+        "category": "Unlimited",
+        "data": "2.5GB/day",
+        "validity": "365 days",
+        "price": 3599
+      },
+      {
+        "planid": 20,
+        "category": "Unlimited",
+        "data": "2.5GB/day",
+        "validity": "365 days",
+        "price": 3999
+      },
+      {
+        "planid": 21,
+        "category": "Unlimited",
+        "data": "2.5GB/day",
+        "validity": "84 days",
+        "price": 1199
+      },
+      {
+        "planid": 22,
+        "category": "Unlimited",
+        "data": "2GB/day",
+        "validity": "84 days",
+        "price": 979
+      },
+      {
+        "planid": 23,
+        "category": "Unlimited",
+        "data": "1.5GB/day",
+        "validity": "90 days",
+        "price": 929
+      },
+      {
+        "planid": 24,
+        "category": "Unlimited",
+        "data": "1.5GB/day",
+        "validity": "84 days",
+        "price": 859
+      },
+      {
+        "planid": 25,
+        "category": "Unlimited",
+        "data": "3GB/day",
+        "validity": "56 days",
+        "price": 838
+      },
+      {
+        "planid": 26,
+        "category": "Unlimited",
+        "data": "2GB/day",
+        "validity": "56 days",
+        "price": 649
+      },
+      {
+        "planid": 27,
+        "category": "Unlimited",
+        "data": "1.5GB/day",
+        "validity": "60 days",
+        "price": 619
+      },
+      {
+        "planid": 28,
+        "category": "Unlimited",
+        "data": "3GB/day",
+        "validity": "28 days",
+        "price": 549
+      }
+    ]
+  }
+  

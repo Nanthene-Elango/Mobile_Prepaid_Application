@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(85, 85, 85, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(53, 53, 53, 0.8);
+}
+
+a{
+    cursor: pointer;
+}
+*{
+    font-family: 'Poppins','Segoe UI', Verdana, sans-serif;
+}

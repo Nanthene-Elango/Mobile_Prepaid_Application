@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Prepaid Go</title>
+    <style>
+        .input-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid darkgray;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .input-box .prefix {
+            color: rgb(76, 76, 76);
+        }
+
+        .input-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .input-box:focus-within {
+            border-color: rgb(0, 32, 96);
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+
+        nav {
+            background-color: white;
+        }
+
+        .carousel-item img {
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            left: auto;
+            transform: translateY(-50%);
+            text-align: left;
+            max-width: 40%;
+        }
+
+        .accordion-button {
+            color: rgb(1, 32, 96);
+            font-weight: 600;
+        }
+
+        /* Center text on small screens */
+        @media (max-width: 768px) {
+            .carousel-caption {
+                max-width: 80%;
+                text-align: center;
+                bottom: 0;
+            }
+
+            .carousel-item img {
+                height: 370px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top"
+        style="box-shadow: 1px 2px 10px rgb(198, 198, 198);">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand mx-4" href="./index.html">
+                <img src="./img/Logo_Transparent.png" alt="Logo" style="height: 60px;">
+            </a>
+
+            <!-- Navbar Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item px-2">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="./plans.html">Plans</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="./recharge.html">Recharge</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="./login.html"><button type="button" class="btn btn-primary">Login</button></a>
+                    </li>
+
+                    <!-- Account Dropdown (Visible only if logged in) -->
+                    <li class="nav-item dropdown px-2 d-none" id="accountMenu">
+                        <a class="nav-link" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa fa-user-circle fa-2x"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="./profile.html">Transactions</a></li>
+                            <li><a class="dropdown-item" href="./profile.html">Recharge History</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="./img/c-1.jpg" class="d-block w-100" alt="Fastest Network">
+                <div class="carousel-caption">
+                    <h2>Seamless Connectivity, Anytime, Anywhere</h2>
+                    <p>Experience the fastest prepaid mobile network.</p>
+                    <a href="./index.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="./img/PicsartC1_25-02-16_06-00-19-069.jpg" class="d-block w-100" alt="Best Recharge Plans">
+                <div class="carousel-caption">
+                    <h2>Unbeatable Prepaid Plans – Get More for Less!</h2>
+                    <p>Choose the best plans tailored for you.</p>
+                    <a href="./plans.html" class="btn btn-warning">View Plans</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="./img/PicsartC2_25-02-16_06-08-36-578.jpg" class="d-block w-100" alt="Instant Recharge">
+                <div class="carousel-caption">
+                    <h2>Never Run Out of Data – Recharge Instantly</h2>
+                    <p>Fast, secure, and hassle-free recharges.</p>
+                    <a href="./plans.html" class="btn btn-success">Recharge Now</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!--Why should you choose prepaid Go-->
+    <section class="container text-center p-5 my-5 col-11"
+        style="border-radius: 10px; background-color: rgb(1, 33, 96); color: aliceblue;box-shadow: 1px 2px 10px darkgray;">
+        <h2>Why Choose Prepaid Go?</h2>
+        <div class="row">
+            <div class="col-md-4 py-4">
+                <i class="fas fa-bolt fa-3x text-primary pb-3"></i>
+                <h4>Fast Connectivity</h4>
+                <p>Experience lightning-fast prepaid mobile network speeds.</p>
+            </div>
+            <div class="col-md-4 py-4">
+                <i class="fas fa-wallet fa-3x text-primary pb-3"></i>
+                <h4>Affordable Plans</h4>
+                <p>Choose from a variety of pocket-friendly plans.</p>
+            </div>
+            <div class="col-md-4 py-4">
+                <i class="fas fa-headset fa-3x text-primary pb-3"></i>
+                <h4>24/7 Support</h4>
+                <p>Get assistance anytime with our dedicated support team.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Recharge Instantly-->
+    <section class="container p-5">
+        <h3 class="text-center">Recharge Your Number Instantly!</h3>
+        <!-- <div class="container col-md-5">
+            <div class="my-4 mx-auto d-flex flex-column flex-md-row align-items-center input-box">
+                <input type="text" class="form-control m-1" placeholder="Mobile Number">
+                <button class="btn btn-primary">Proceed</button>
+            </div>
+        </div> -->
+        <span class="m-4 d-flex flex-column align-items-center justify-content-center recharge-number">
+            <div class="col-12 col-md-4 input-box">
+                <span class="p-2 prefix">+91</span>
+                <input type="tel" name="" id="mobile" placeholder="Mobile Number" maxlength="10">
+            </div>
+            <div id="error-number" class="text-danger" style="min-height: 10px;"></div>
+            <button class="btn btn-primary mt-3 col-12 col-md-4 " onclick="validate()">Proceed</button>
+        </span>
+    </section>
+
+
+    <!--How it works-->
+    <section class="container text-center" style="color: rgb(1, 32, 96);">
+        <h2 class="py-3">How It Works?</h2>
+        <div class="d-lg-flex justify-content-evenly">
+            <div class="col-lg-3 p-5 my-3"
+                style="background-color: #aeeeff7d; border-radius: 10px;box-shadow: 1px 2px 10px #cdcdcd;">
+                <i class="fas fa-phone fa-3x text-primary pb-3"></i>
+                <h4>Enter Your Number</h4>
+                <p>Provide your mobile number to check available plans.</p>
+            </div>
+            <div class="col-lg-3  p-5 my-3"
+                style="background-color: #aeeeff7d; border-radius: 10px;box-shadow: 1px 2px 10px #cdcdcd;">
+                <i class="fas fa-list-alt fa-3x text-primary pb-3"></i>
+                <h4>Select a Plan</h4>
+                <p>Choose from a variety of prepaid recharge options.</p>
+            </div>
+            <div class="col-lg-3  p-5 my-3"
+                style="background-color: #aeeeff7d; border-radius: 10px;box-shadow: 1px 2px 10px #cdcdcd;">
+                <i class="fas fa-credit-card fa-3x text-primary pb-3"></i>
+                <h4>Make Payment</h4>
+                <p>Complete the payment and enjoy uninterrupted services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--FAQ Section-->
+    <section class="container-fluid my-5 mb-lg-0 p-5 p-md-4" id="faq"
+        style="background-color: white; height: fit-content;">
+        <div class="row align-items-center">
+
+            <div class="col-md-6 text-center d-none d-md-block">
+                <img src="./img/FAQ.png" class="img-fluid rounded" alt="FAQ Illustration" style="height: 500px;">
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="text-center pb-3">Frequently Asked Questions</h2>
+
+                <div class="accordion" id="faqAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#answer1">
+                                How do I recharge my mobile?
+                            </button>
+                        </h2>
+                        <div id="answer1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                You can recharge by entering your number, selecting a plan, and making a payment.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#answer2">
+                                Can I get a refund if I recharge the wrong number?
+                            </button>
+                        </h2>
+                        <div id="answer2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Unfortunately, recharges cannot be refunded. Please verify the number before proceeding.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#answer3">
+                                What payment methods are supported?
+                            </button>
+                        </h2>
+                        <div id="answer3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We support credit/debit cards, UPI, net banking.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#answer4">
+                                Can I recharge for someone else?
+                            </button>
+                        </h2>
+                        <div id="answer4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, you can recharge for another mobi com user by entering their valid mobile number.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#answer5">
+                                How do i check my recharge history?
+                            </button>
+                        </h2>
+                        <div id="answer5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                you can check your recharge history from recharge history menu under your profile.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#answer6">
+                                Can I recharge with a different network provider?
+                            </button>
+                        </h2>
+                        <div id="answer6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                No you cannot recharge with a different network provide from Prepaid Go.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--About Us-->
+    <section class="container-fluid p-5" id="about-us" style="font-size: 1.05rem;">
+        <div>
+            <!-- <h4 class="text-center">About Us</h4> -->
+
+            <div class="d-flex justify-content-center">
+                <img class="col-8 col-sm-4 col-lg-2 mb-5" src="./img/Logo_Transparent.png" alt="about-us">
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-8">
+                    <p>
+                        <strong>Empowering Mobi-Comm Users with Seamless Prepaid Recharges</strong>
+                        <br><br>
+                        Welcome to Prepaid Go, the official prepaid recharge platform for Mobi-Comm Services Ltd. Our
+                        goal is to provide a fast, secure, and user-friendly way for customers to recharge their mobile
+                        numbers
+                        instantly.
+                        <br><br>
+                        <strong>Who We Are?</strong>
+                        <br><br>
+                        Mobi-Comm Services Ltd. is a leading mobile service provider in India, offering reliable voice,
+                        data, and unlimited plans to millions of users.With Prepaid Go, we bring you a simple and
+                        efficient
+                        recharge experience tailored to your needs.
+                        <br><br>
+                        <strong>Why Use Prepaid Go?</strong>
+                    <ul>
+                        <li>Quick & Easy Recharges – Get your prepaid mobile recharged in seconds.</li>
+                        <li>Multiple Payment Options – Pay via UPI, Credit/Debit Card, Net Banking, and Wallets.</li>
+                        <li>Exclusive Plans – Access the latest talk time, data, and unlimited packs.</li>
+                        <li>Secure Transactions – We ensure your payments and personal data are protected.</li>
+                        <li>Recharge History – Keep track of your past recharges anytime.</li>
+                    </ul>
+                    <br>
+                    <strong>Our Commitment</strong>
+                    <br><br>
+                    At Mobi-Comm Services Ltd., we are dedicated to offering a hassle-free digital experience to our
+                    prepaid customers. <br>
+                    Whether you need a quick top-up or a long-term plan, Prepaid Go is here to make your
+                    recharges smooth and effortless.
+                    <br>
+                    <strong>Recharge Anytime, Anywhere!</strong>
+                    <br>
+                    Stay connected with Mobi-Comm Services Ltd. and enjoy uninterrupted mobile services with Prepaid Go.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--Footer Section-->
+    <footer class="text-white p-4" style="background-color: rgb(1, 32, 96);">
+        <div class="container">
+            <div class="row">
+
+                <!-- Quick Links -->
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <hr>
+                    <ul class="list-unstyled">
+                        <li><a href="./index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#about-us" class="text-white text-decoration-none">About Us</a></li>
+                        <li><a href="./plans.html" class="text-white text-decoration-none">Plans</a></li>
+                        <li><a href="./recharge.html" class="text-white text-decoration-none">Recharge</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Support -->
+                <div class="col-md-2">
+                    <h5>Support</h5>
+                    <hr>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+                        <li><a href="#faq" class="text-white text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div class="col-md-2">
+                    <h5>Follow Us</h5>
+                    <hr>
+                    <a href="#" class="text-white me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <div class="col-md-5 my-2" *ngIf="isLoggedIn">
+                    <h5>Give Your Feedback</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Your feedback...">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-light">
+            <p class="text-center">© 2025 Prepaid Go. All Rights Reserved.</p>
+
+        </div>
+    </footer>
+
+    <!-- Go to Top Button -->
+    <button id="goTopBtn" class="btn position-fixed end-0 bottom-0 m-3" onclick="scrollToTop()">
+        <i class="fa fa-circle-arrow-up fa-2x text-primary"></i>
+    </button>
+
+    <!-- JavaScript for Smooth Scroll -->
+    <script>
+        document.getElementById("about-us").addEventListener("copy", () => {
+            alert("Don't copy my content!!🤨");
+        })
+
+        function validate(){
+            let mobileNumber = document.getElementById("mobile").value;
+            if (mobileNumber.length !== 10 || isNaN(mobileNumber)) {
+                // document.getElementById("error-number").style.display = "block";
+                document.getElementById("error-number").textContent = "Enter a valid number!";
+                return;
+            }
+            else {
+                document.getElementById("error-number").textContent = "";
+            }
+        }
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide button on scroll
+        window.onscroll = function () {
+            let btn = document.getElementById("goTopBtn");
+            if (document.documentElement.scrollTop > 600) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        let isLoggedIn = false; // Change this dynamically as per your logic
+
+        if (isLoggedIn) {
+            document.getElementById("accountMenu").classList.remove("d-none");
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
