@@ -1,0 +1,62 @@
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.input-box .prefix {
+    color: rgb(76, 76, 76);
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.input-box:focus-within {
+    border-color: rgb(0, 32, 96);
+}
+
+body {
+    background-color: aliceblue;
+}
+
+nav {
+    background-color: white;
+}
+
+.carousel-item img {
+    height: 600px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    left: auto;
+    transform: translateY(-50%);
+    text-align: left;
+    max-width: 40%;
+}
+
+.accordion-button {
+    color: rgb(1, 32, 96);
+    font-weight: 600;
+}
+
+/* Center text on small screens */
+@media (max-width: 768px) {
+    .carousel-caption {
+        max-width: 80%;
+        text-align: center;
+        bottom: 0;
+    }
+
+    .carousel-item img {
+        height: 370px;
+    }
+}

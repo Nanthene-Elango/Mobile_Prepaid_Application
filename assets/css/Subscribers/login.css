@@ -1,0 +1,30 @@
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #a0a0a0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.input-box .prefix {
+    color: rgb(76, 76, 76);
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.toast {
+    visibility: hidden;
+}
+
+.toast.show {
+    visibility: visible;
+}
+
+.input-box:focus-within {
+    border: 2px solid rgb(0, 32, 96);
+
+}

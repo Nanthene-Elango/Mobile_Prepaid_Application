@@ -1,0 +1,41 @@
+<!-- Logo -->
+<a class="navbar-brand mx-4" href="./index.html">
+    <img src="../assets/img/Logo.png" alt="Logo" style="height: 60px;">
+</a>
+
+<!-- Navbar Toggle Button -->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- Navbar Content -->
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item px-2">
+            <a class="nav-link active" href="./index.html">Home</a>
+        </li>
+        <li class="nav-item px-2">
+            <a class="nav-link" href="./plans.html">Plans</a>
+        </li>
+        <li class="nav-item px-2">
+            <a class="nav-link" href="./recharge.html">Recharge</a>
+        </li>
+        <li class="nav-item px-2" id="loginBtn">
+            <a href="./login.html"><button type="button" class="btn btn-primary" onclick="savePageURL()">Login</button></a>
+        </li>
+
+        <li class="nav-item dropdown px-2" id="accountMenu">
+            <a class="nav-link d-flex text-dark" id="accountDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-user-circle fa-2x me-2"></i><span class="pt-1" id="navUserName"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="./profile.html">Profile</a></li>
+                <li><a class="dropdown-item" href="./profile.html">Transactions</a></li>
+                <li><a class="dropdown-item" href="./profile.html">Recharge History</a></li>
+                <li><a class="dropdown-item text-danger" id="logoutBtn">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

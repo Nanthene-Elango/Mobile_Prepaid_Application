@@ -1,0 +1,112 @@
+.aside {
+    background-color: rgb(3, 32, 96);
+    color: aliceblue;
+}
+
+.aside .content {
+    padding-top: 100px;
+}
+
+.card-header {
+    background-color: rgb(3, 32, 96);
+    color: white;
+}
+
+.recharge-number input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.recharge-number a {
+    text-decoration: none;
+}
+
+.plans-category .nav-item a {
+    font-size: 1.03rem;
+    font-weight: 500;
+    color: rgb(0, 32, 96);
+}
+
+.card-body {
+    border: none;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid #a0a0a0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.input-box .prefix {
+    color: rgb(76, 76, 76);
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.plans-category .nav-item a:hover,
+.plans-category .nav-item a:active,
+.plans-category .nav-item a:focus {
+    border-radius: 20px;
+    background-color: rgb(0, 32, 96);
+    color: aliceblue;
+}
+
+.input-box:focus-within {
+    border-color: rgb(0, 32, 96);
+}
+
+.card {
+    border: none;
+}
+
+.card-body {
+    background: rgba(255, 255, 255, 0.7);
+    /* Glass effect */
+
+    /* Blur background */
+    border-radius: 12px;
+    /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+    padding: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card-body:hover {
+    transform: scale(1.02);
+}
+
+.view-details {
+    transition: color 0.3s ease-in-out;
+}
+
+.view-details:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.plans-category .nav-item a:hover,
+.plans-category .nav-item a.active,
+.plans-category .nav-item a:focus {
+    border-radius: 20px;
+    background-color: rgb(0, 32, 96);
+    color: aliceblue;
+}
+
+@media screen and (max-width: 550px) {
+    .plans-category .nav-item a {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+    .card-body{
+        font-size: small;
+    }
+}

@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "mobile_number": "9876543210",
+      "email_id": "john.doe@example.com",
+      "dob": "1995-06-15",
+      "address": "123, Elm Street, New York, USA"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "mobile_number": "8765432109",
+      "email_id": "jane.smith@example.com",
+      "dob": "1998-09-22",
+      "address": "456, Oak Avenue, Los Angeles, USA"
+    },
+    {
+      "id": 3,
+      "name": "Amit Kumar",
+      "mobile_number": "7654321098",
+      "email_id": "amit.kumar@example.com",
+      "dob": "1992-12-05",
+      "address": "789, MG Road, Delhi, India"
+    },
+    {
+      "id": 4,
+      "name": "Emily Johnson",
+      "mobile_number": "6543210987",
+      "email_id": "emily.johnson@example.com",
+      "dob": "2000-03-30",
+      "address": "101, Pine Street, Toronto, Canada"
+    },
+    {
+      "id": 5,
+      "name": "Nanthene Elango",
+      "mobile_number": "9487381354",
+      "email_id": "nanthene05@gmail.com",
+      "dob": "2004-04-05",
+      "address": "57 , Bharathi Street , Allikuttai , Salem , TN ,India"
+    }
+  ]
+  

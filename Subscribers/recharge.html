@@ -9,7 +9,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -18,148 +17,18 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/Subscribers/plans.css">
+    <script src="../assets/js/Subscribers/recharge.js"></script>
+    <script src="script.js"></script>
     <title>Recharge</title>
-    <style>
-        .card-header {
-            background-color: rgb(3, 32, 96);
-            color: white;
-        }
-
-        .recharge-number input {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid gray;
-            outline: none;
-        }
-
-        .recharge-number a {
-            text-decoration: none;
-        }
-
-        .plans-category .nav-item a {
-            font-size: 1.03rem;
-            font-weight: 500;
-            color: rgb(0, 32, 96);
-        }
-
-        .card-body {
-            border: none;
-        }
-
-        .input-box {
-            display: flex;
-            align-items: center;
-            border: 2px solid #a0a0a0;
-            border-radius: 4px;
-            width: 100%;
-        }
-
-        .input-box .prefix {
-            color: rgb(76, 76, 76);
-        }
-
-        .input-box input {
-            border: none;
-            outline: none;
-            width: 100%;
-        }
-
-        .plans-category .nav-item a:hover,
-        .plans-category .nav-item a.active,
-        .plans-category .nav-item a:focus {
-            border-radius: 20px;
-            background-color: rgb(0, 32, 96);
-            color: aliceblue;
-        }
-
-        .input-box:focus-within {
-            border-color: rgb(0, 32, 96);
-        }
-
-        .card {
-            border: none;
-        }
-
-        .card-body {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 5px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card-body:hover {
-            transform: scale(1.02);
-        }
-
-        .view-details {
-            transition: color 0.3s ease-in-out;
-        }
-
-        .view-details:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-
-        @media screen and (max-width: 550px) {
-            .plans-category .nav-item a {
-                font-size: 0.8rem;
-                padding: 8px;
-            }
-            .card-body{
-                font-size: small;
-            }
-        }
-    </style>
 </head>
 
 <body style="height: fit-content;">
     <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top"
         style="box-shadow: 1px 2px 10px rgb(198, 198, 198);">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a class="navbar-brand mx-4" href="./index.html">
-                <img src="./img/Logo_Transparent.png" alt="Logo" style="height: 60px;">
-            </a>
-
-            <!-- Navbar Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar Content -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item px-2">
-                        <a class="nav-link active" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="./plans.html">Plans</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="./plans.html">Recharge</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="./login.html"><button type="button" class="btn btn-primary">Login</button></a>
-                    </li>
-
-                    <!-- Account Dropdown (Visible only if logged in) -->
-                    <li class="nav-item dropdown px-2" id="accountMenu">
-                        <a class="nav-link" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa fa-user-circle fa-2x text-dark"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                            <li><a class="dropdown-item" href="./profile.html">Transactions</a></li>
-                            <li><a class="dropdown-item" href="./profile.html">Recharge History</a></li>
-                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <div class="container-fluid" id="navbarContainer">
+            
         </div>
     </nav>
 
@@ -175,7 +44,7 @@
                 <span class="mb-5 d-flex recharge-number">
                     <div class="mx-2 input-box" style="background-color: white;">
                         <span class="prefix ps-2">+91</span>
-                        <input type="tel" name="" id="" placeholder="9487381354">
+                        <input type="tel" name="rechargeNumber" id="rechargeNumber" placeholder="Mobile Number">
                     </div>
                     <button class="btn btn-primary">Change</button>
                 </span>
@@ -221,11 +90,9 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
                                 <li><a class="dropdown-item" href="#" onclick="applyFilter('All')">All</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="applyFilter('1.5GB/day')">1.5GB/day</a>
-                                </li>
+                                <li><a class="dropdown-item" href="#" onclick="applyFilter('1.5GB/day')">1.5GB/day</a></li>
                                 <li><a class="dropdown-item" href="#" onclick="applyFilter('2GB/day')">2GB/day</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="applyFilter('20 days')">1GB/day</a>
-                                </li>
+                                <li><a class="dropdown-item" href="#" onclick="applyFilter('20 days')">1GB/day</a></li>
                             </ul>
                         </div>
                     </form>
@@ -267,11 +134,17 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Popup Title</h5>
+                    <h5 class="modal-title" id="modalTitle" style="color: rgb(0, 32, 96);">Plan Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    This is a Bootstrap popup (modal) example.
+                <div class="modal-body text-center" id="planBenefits">
+                    <h4  id="price"></h4>
+                    <span class="me-5"><i class="fas fa-clock-rotate-left me-1"></i><span id="validity"></span></span>
+                    <span><i class="fas fa-wifi me-1"></i><span id="data"></span></span>
+                    <h6 class="mt-3"><strong>Additional Benefits</strong></h6>
+                    <div id="benefits">
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
@@ -287,7 +160,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    This is a Bootstrap popup (modal) example.
+                    <div class="d-flex justify-content-center">
+                        <div><strong>Price: </strong></div>
+                        <div id="planPrice"></div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div><strong>Data: </strong></div>
+                        <div id="planData"></div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div><strong>Validity: </strong></div>
+                        <div id="planValidity"></div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-center">
+                        <div><strong>Amount Payable: </strong></div>
+                        <div id="planAmount"></div>
+                    </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
@@ -299,127 +188,9 @@
             </div>
         </div>
     </div>
+
+    <script src="../assets/js/Subscribers/plans.js"></script>
+
 </body>
-
-<script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var scrollSpy = new bootstrap.ScrollSpy(document.querySelector('.scrollspy-example'), {
-            target: "#plans-nav",
-            offset: 50
-        });
-    });
-
-    fetch('plans.json')
-        .then((response) => response.json())
-        .then((data) => {
-            let popular = document.getElementById("popular-plans");
-            let validity = document.getElementById("validity-plans");
-            let data_plans = document.getElementById("data-plans");
-            let unlimited = document.getElementById("unlimited-plans");
-
-            data.plans.forEach((data) => {
-                if (data.category === "Popular") {
-                    let card = document.createElement("div");
-                    card.classList.add("card");
-
-                    card.innerHTML = `
-                <div class="col-12 card-body d-flex flex-column my-1 p-4">
-                    <div class = "col-12 d-flex  justify-content-between">
-                        <div class= "d-flex justify-content-between col-10">
-                            <div class = ""><strong>Rs. ${data.price}</strong><br>unlimited Calls</div>
-                            <div class =""><strong>${data.data}</strong><br>data</div>
-                            <div class = ""><strong>${data.validity}</strong><br>validity</div>
-                        </div>
-                        <a data-bs-toggle="modal" data-bs-target="#payConfirmation"><i class="fa-solid fa-chevron-right fa-lg px-2" style="color: #002060;cursor:pointer"></i></a>
-                    </div>
-                    <hr>
-                    <div class = "d-flex justify-content-end view-details">
-                        <div><a data-bs-toggle="modal" data-bs-target="#planDetail" class = "text-primary text-decoration-none" style = "cursor:pointer">view details</a></div>    
-                    </div>
-                </div>
-                `;
-                    popular.appendChild(card);
-                }
-                if (data.category === "Validity") {
-                    let card = document.createElement("div");
-                    card.classList.add("card");
-                    // card.classList.add("my-2");
-                    // card.classList.add("px-5");
-
-                    card.innerHTML = `
-                 <div class="col-12 card-body d-flex flex-column my-1 p-4">
-
-                    <div class = "col-12 d-flex  justify-content-between">
-                        <div class= "d-flex justify-content-between col-10">
-                            <div class = ""><strong>Rs. ${data.price}</strong><br>unlimited calls</div>
-                            <div class =""><strong>${data.data}</strong><br>data</div>
-                            <div class = ""><strong>${data.validity}</strong><br>validity</div>
-                        </div>
-                        <a data-bs-toggle="modal" data-bs-target="#payConfirmation"><i class="fa-solid fa-chevron-right fa-lg px-2" style="color: #002060;cursor:pointer"></i></a>
-                    </div>
-                    <hr>
-                    <div class = "d-flex justify-content-end">
-                        <div><a data-bs-toggle="modal" data-bs-target="#planDetail" class = "text-primary text-decoration-none" style = "cursor:pointer">view details</a></div>    
-                    </div>
-                </div>
-                `;
-                    validity.appendChild(card);
-                }
-                if (data.category === "Data") {
-                    let card = document.createElement("div");
-                    card.classList.add("card");
-                    // card.classList.add("my-2");
-                    // card.classList.add("px-5");
-
-                    card.innerHTML = `
-                <div class="col-12 card-body d-flex flex-column my-1 p-4">
-
-                    <div class = "col-12 d-flex  justify-content-between">
-                        <div class= "d-flex justify-content-between col-10">
-                            <div class = ""><strong>Rs. ${data.price}</strong><br>unlimited calls</div>
-                            <div class =""><strong>${data.data}</strong><br>data</div>
-                            <div class = ""><strong>${data.validity}</strong><br>validity</div>
-                        </div>
-                        <a data-bs-toggle="modal" data-bs-target="#payConfirmation"><i class="fa-solid fa-chevron-right fa-lg px-2" style="color: #002060;cursor:pointer"></i></a>
-                    </div>
-                    <hr>
-                    <div class = "d-flex justify-content-end">
-                        <div><a data-bs-toggle="modal" data-bs-target="#planDetail" class = "text-primary text-decoration-none" style = "cursor:pointer">view details</a></div>    
-                    </div>
-                </div>
-                `;
-                    data_plans.appendChild(card);
-                }
-                if (data.category === "Unlimited") {
-                    let card = document.createElement("div");
-                    card.classList.add("card");
-                    // card.classList.add("my-2");
-                    // card.classList.add("px-5");
-
-                    card.innerHTML = `
-                 <div class="col-12 card-body d-flex flex-column my-1 p-4">
-
-                    <div class = "col-12 d-flex  justify-content-between">
-                        <div class= "d-flex justify-content-between col-10">
-                            <div class = ""><strong>Rs. ${data.price}</strong><br>unlimited calls</div>
-                            <div class =""><strong>${data.data}</strong><br>data</div>
-                            <div class = ""><strong>${data.validity}</strong><br>validity</div>
-                        </div>
-                        <a data-bs-toggle="modal" data-bs-target="#payConfirmation"><i class="fa-solid fa-chevron-right fa-lg px-2" style="color: #002060;cursor:pointer"></i></a>
-                    </div>
-                    <hr>
-                    <div class = "d-flex justify-content-end">
-                        <div><a data-bs-toggle="modal" data-bs-target="#planDetail" class = "text-primary text-decoration-none" style = "cursor:pointer">view details</a></div>    
-                    </div>
-                </div>
-                `;
-                    unlimited.appendChild(card);
-                }
-            })
-
-
-        })
-</script>
 
 </html>

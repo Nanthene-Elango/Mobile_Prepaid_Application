@@ -18,12 +18,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="script.js"></script>
+    <script src="../assets/js/Subscribers/profile.js"></script>
     <title>Profile</title>
     <style>
-        .plans-category .nav-item a:hover,
-        .plans-category .nav-item a.active,
-        .plans-category .nav-item a:focus {
+        .button-toggle .nav-item a:hover,
+        .button-toggle .nav-item a.active,
+        .button-toggle .nav-item a:focus {
             border-radius: 20px;
             background-color: rgb(0, 32, 96);
             color: aliceblue;
@@ -35,49 +37,8 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top"
         style="box-shadow: 1px 2px 10px rgb(198, 198, 198);">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a class="navbar-brand mx-4" href="./index.html">
-                <img src="./img/Logo_Transparent.png" alt="Logo" style="height: 60px;">
-            </a>
-
-            <!-- Navbar Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar Content -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item px-2">
-                        <a class="nav-link active" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="./plans.html">Plans</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="./plans.html">Recharge</a>
-                    </li>
-                    <!-- <li class="nav-item px-2">
-                        <a href="./login.html"><button type="button" class="btn btn-primary">Login</button></a>
-                    </li> -->
-
-                    <!-- Account Dropdown (Visible only if logged in) -->
-                    <li class="nav-item dropdown px-2" id="accountMenu">
-                        <a class="nav-link" href="#" id="accountDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user-circle fa-2x"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Transactions</a></li>
-                            <li><a class="dropdown-item" href="#">Recharge History</a></li>
-                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <div class="container-fluid" id="navbarContainer">
+            
         </div>
     </nav>
 
@@ -92,14 +53,14 @@
                     <div class="p-5">
                         <div class="d-flex flex-column align-items-center pb-5">
                             <i class="fa-solid fa-user-circle fa-5x" style="color: rgb(0,32,96);"></i>
-                            <h1 class="text-center">Nanthene Elango</h1>
+                            <h1 class="text-center" id="userName"></h1>
                             <div class="text-left pt-3">
-                                <div class="pb-2"><i class="fa-solid fa-phone pe-3"></i><span>+91 9487381354</span>
+                                <div class="pb-2"><i class="fa-solid fa-phone pe-3"></i><span id="userNumber">+91 9487381354</span>
                                 </div>
-                                <div class="pb-2"><i class="fa-solid fa-envelope pe-3"></i><span>nanthene05@gmail.com
+                                <div class="pb-2"><i class="fa-solid fa-envelope pe-3"></i><span id="userEmail">nanthene05@gmail.com
                                     </span></div>
-                                <div class="pb-2"><i class="fa-solid fa-cake pe-3"></i><span>05/04/2004 </span></div>
-                                <div class=""><i class="fa-solid fa-home pe-3"></i><span>57 , Bharathi Street ,
+                                <div class="pb-2"><i class="fa-solid fa-cake pe-3"></i><span id="userDOB">05/04/2004 </span></div>
+                                <div class=""><i class="fa-solid fa-home pe-3"></i><span id="userAddress">57 , Bharathi Street ,
                                         Allikuttai , Salem -636014</span>
                                 </div>
                             </div>
@@ -129,7 +90,7 @@
             <!--Recharge History-->
             <div class="col-md-11 col-12 my-3 p-4 d-flex flex-column align-items-center justify-content-center"
                 style="box-shadow: 1px 2px 10px darkgray;border-radius: 10px; height: fit-content;background-color: white;">
-                <ul class="nav mb-4 d-flex align-items-center plans-category"
+                <ul class="nav mb-4 d-flex align-items-center button-toggle"
                     style="border: 1px solid rgb(0, 32, 96); border-radius: 25px; width: max-content;">
                     <li class="nav-item">
                         <a class="nav-link" id="recharge-link">Recharge History</a>
