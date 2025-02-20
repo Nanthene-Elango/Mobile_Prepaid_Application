@@ -19,6 +19,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/Subscribers/plans.css">
+    <script src="../assets/js/Subscribers/plans.js"></script>
     <script src="../assets/js/Subscribers/recharge.js"></script>
     <script src="script.js"></script>
     <title>Recharge</title>
@@ -75,34 +76,31 @@
             </nav>
 
 
+            <div class="col-10 d-flex justify-content-end m-4 px-5">
+                <a onclick="clearFilters()" class="text-decoration-none text-muted me-1 d-none" id="clear"><i class="fa-solid fa-x"></i> clear filter</a>
+                <a onclick = "showFilters()" class="text-decoration-none" id="filter"><i class="fas fa-filter"></i> filter plans</a>
+            </div>
+
             <div class="container-fluid col-sm-10 overflow-auto" style="height: 500px;position: relative;">
 
-                <div class="d-flex justify-content-center">
-                    <form class="my-5 col-10 col-md-6 d-flex search-bar">
-                        <!-- Search Input -->
-                        <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-
-                        <!-- Filter Dropdown -->
-                        <div class="dropdown">
-                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="filterDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Filter
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
-                                <li><a class="dropdown-item" href="#" onclick="applyFilter('All')">All</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="applyFilter('1.5GB/day')">1.5GB/day</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="applyFilter('2GB/day')">2GB/day</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="applyFilter('20 days')">1GB/day</a></li>
-                            </ul>
-                        </div>
-                    </form>
-                </div>
-
+            
                 <div data-bs-spy="scroll" data-bs-target="#plans-nav" data-bs-offset="0" tabindex="0"
-                    class="scrollspy-example">
+                    class="scrollspy-example" id="plansContainer">
+                    <div class="card m-md-4 my-4 plans" id="all-plans">
+                        <div class="card-header" style="border-radius: 5px;">
+                            All Plans
+                        </div>
+                        <div id="all-plan-cards">
+
+                        </div>
+
+                    </div>
                     <div class="card m-md-4 my-4 plans" id="popular-plans">
                         <div class="card-header" style="border-radius: 5px;">
                             Popular plans
+                        </div>
+                        <div id="popular-plan-cards">
+
                         </div>
 
                     </div>
@@ -110,11 +108,17 @@
                         <div class="card-header" style="border-radius: 5px;">
                             Validity plans
                         </div>
+                        <div id="validity-plan-cards">
+
+                        </div>
 
                     </div>
                     <div class="card m-md-4 my-4 plans" id="data-plans">
                         <div class="card-header" style="border-radius: 5px;">
                             Data plans
+                        </div>
+                        <div id="data-plan-cards">
+
                         </div>
 
                     </div>
@@ -122,14 +126,63 @@
                         <div class="card-header" style="border-radius: 5px;">
                             Unlimited plans
                         </div>
+                        <div id="unlimited-plan-cards">
 
+                        </div>
                     </div>
-                </div>
 
             </div>
         </main>
 
     </section>
+    <div class="modal fade" id="planFilter" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle" style="color: rgb(0, 32, 96);">Filter Plans</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-end d-none">
+                        <a class="text-secondary text-decoration-none me-2"><i class="fa-solid fa-x"></i> Clear filter</a>
+                     </div>
+                     <div class="container mb-5">
+                         <label for="pricerange" class="form-label"><strong>Choose Price Range:</strong></label><br>
+                         <input type="range" class="form-range w-75" id="pricerange" min="0" max="5000" step="100" value="2500"
+                             oninput="rangeValue.innerText = this.value">
+                         <p>Maximum Price: Rs.<span id="rangeValue">2500</span></p>
+                     </div>
+                     
+                     <div class="container mb-5">
+                         <label for="dataFilter"><strong>Data: </strong></label>
+                         <div class="d-flex flex-wrap" id="dataFilter">
+                             <span class="p-1"><input type="checkbox" id="1GB" value="1GB"> 1GB</span>
+                             <span class="p-1"><input type="checkbox" id="1.5GB" value="1.5GB"> 1.5GB</span>
+                             <span class="p-1"><input type="checkbox" id="2GB" value="2GB"> 2GB</span>
+                             <span class="p-1"><input type="checkbox" id="2.5GB" value="2.5GB"> 2.5GB</span>
+                             <span class="p-1"><input type="checkbox" id="3GB" value="3GB"> 3GB</span>
+                             <span class="p-1"><input type="checkbox" id=">3GB" value=">3GB"> >3GB</span>
+                         </div>
+                     </div>
+     
+                     <div class="container mb-5">
+                         <label for="validityFilter"><strong>Validity: </strong></label>
+                         <div class="d-flex flex-wrap" id="validityFilter">
+                             <span class="p-1"><input type="checkbox" id="1day" value="1 day"> 1 day</span>
+                             <span class="p-1"><input type="checkbox" id="28days" value="28 days"> 28 days</span>
+                             <span class="p-1"><input type="checkbox" id="30days" value="30 days"> 30 days</span>
+                             <span class="p-1"><input type="checkbox" id="56days" value="56 days"> 56 days</span>
+                             <span class="p-1"><input type="checkbox" id="86days" value="84 days"> 84 days</span>
+                             <span class="p-1"><input type="checkbox" id="365days" value="365 days"> 365 days</span>
+                         </div>
+                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="filterPlans()">Apply Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="planDetail" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -189,7 +242,7 @@
         </div>
     </div>
 
-    <script src="../assets/js/Subscribers/plans.js"></script>
+
 
 </body>
 

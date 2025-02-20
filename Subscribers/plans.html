@@ -20,6 +20,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/Subscribers/plans.css">
+    
     <script src="script.js"></script>
 </head>
 
@@ -33,8 +34,8 @@
 
     <section class="d-flex flex-column flex-lg-row">
 
-        <aside class="col-lg-4 pt-5 text-center" style="background-color: rgb(0, 32, 96);color: aliceblue;">
-            <h3>Explore Our Exclusive Recharge Plans</h3>
+        <aside class="col-lg-4 py-5 text-center" style="background-color: rgb(0, 32, 96);color: aliceblue;">
+            <h3 class="mt-5">Explore Our Exclusive Recharge Plans</h3>
         </aside>
 
         <main class="col-lg-8 d-flex flex-column justify-content-center align-items-center pt-3">
@@ -91,6 +92,9 @@
             <nav id="plans-nav">
                 <ul class="nav nav-pills mt-3 plans-category">
                     <li class="nav-item">
+                        <a class="nav-link" href="#all-plans">All Plans</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#popular-plans">Popular Plans</a>
                     </li>
                     <li class="nav-item">
@@ -106,17 +110,29 @@
                 <hr class="col-12" style="color: rgb(0, 32, 96);">
             </nav>
 
-            <div class="col-10 d-flex justify-content-end mx-5 px-5">
-                <a onclick="clearFilters()" class="text-decoration-none text-muted me-1"><i class="fa-solid fa-x"></i> clear filter</a>
-                <a onclick = "showFilters()" class="text-decoration-none"><i class="fas fa-filter"></i> filter plans</a>
+            <div class="col-10 d-flex justify-content-end m-4 px-5">
+                <a onclick="clearFilters()" class="text-decoration-none text-muted me-1 d-none" id="clear"><i class="fa-solid fa-x"></i> clear filter</a>
+                <a onclick = "showFilters()" class="text-decoration-none" id="filter"><i class="fas fa-filter"></i> filter plans</a>
             </div>
-            <div class="container-fluid col-sm-10 overflow-auto" style="height: 500px;position: relative;">
+            <div class="container-fluid col-sm-10 overflow-auto " style="height: 500px;position: relative;">
 
                 <div data-bs-spy="scroll" data-bs-target="#plans-nav" data-bs-offset="0" tabindex="0"
-                    class="scrollspy-example">
+                    class="scrollspy-example" id="plansContainer">
+                    <div class="card m-md-4 my-4 plans" id="all-plans">
+                        <div class="card-header" style="border-radius: 5px;">
+                            All Plans
+                        </div>
+                        <div id="all-plan-cards">
+
+                        </div>
+
+                    </div>
                     <div class="card m-md-4 my-4 plans" id="popular-plans">
                         <div class="card-header" style="border-radius: 5px;">
                             Popular plans
+                        </div>
+                        <div id="popular-plan-cards">
+
                         </div>
 
                     </div>
@@ -124,11 +140,17 @@
                         <div class="card-header" style="border-radius: 5px;">
                             Validity plans
                         </div>
+                        <div id="validity-plan-cards">
+
+                        </div>
 
                     </div>
                     <div class="card m-md-4 my-4 plans" id="data-plans">
                         <div class="card-header" style="border-radius: 5px;">
                             Data plans
+                        </div>
+                        <div id="data-plan-cards">
+
                         </div>
 
                     </div>
@@ -136,10 +158,12 @@
                         <div class="card-header" style="border-radius: 5px;">
                             Unlimited plans
                         </div>
+                        <div id="unlimited-plan-cards">
 
+                        </div>
                     </div>
+                    
                 </div>
-
             </div>
         </main>
     </section>
@@ -163,7 +187,7 @@
                      
                      <div class="container mb-5">
                          <label for="dataFilter"><strong>Data: </strong></label>
-                         <div class="d-flex flex-wrap">
+                         <div class="d-flex flex-wrap" id="dataFilter">
                              <span class="p-1"><input type="checkbox" id="1GB" value="1GB"> 1GB</span>
                              <span class="p-1"><input type="checkbox" id="1.5GB" value="1.5GB"> 1.5GB</span>
                              <span class="p-1"><input type="checkbox" id="2GB" value="2GB"> 2GB</span>
@@ -175,13 +199,13 @@
      
                      <div class="container mb-5">
                          <label for="validityFilter"><strong>Validity: </strong></label>
-                         <div class="d-flex flex-wrap">
-                             <span class="p-1"><input type="checkbox" id="1day" value="1day"> 1day</span>
-                             <span class="p-1"><input type="checkbox" id="28days" value="28days"> 28days</span>
-                             <span class="p-1"><input type="checkbox" id="30days" value="30days"> 30days</span>
-                             <span class="p-1"><input type="checkbox" id="56days" value="56days"> 56days</span>
-                             <span class="p-1"><input type="checkbox" id="86days" value="86days"> 86days</span>
-                             <span class="p-1"><input type="checkbox" id="365days" value="365days"> 365days</span>
+                         <div class="d-flex flex-wrap" id="validityFilter">
+                             <span class="p-1"><input type="checkbox" id="1day" value="1 day"> 1 day</span>
+                             <span class="p-1"><input type="checkbox" id="28days" value="28 days"> 28 days</span>
+                             <span class="p-1"><input type="checkbox" id="30days" value="30 days"> 30 days</span>
+                             <span class="p-1"><input type="checkbox" id="56days" value="56 days"> 56 days</span>
+                             <span class="p-1"><input type="checkbox" id="86days" value="84 days"> 84 days</span>
+                             <span class="p-1"><input type="checkbox" id="365days" value="365 days"> 365 days</span>
                          </div>
                      </div>
                 </div>
@@ -251,7 +275,4 @@
         </div>
     </div>
 </body>
-
-<script src="../assets/js/Subscribers/plans.js"></script>
-
 </html>
