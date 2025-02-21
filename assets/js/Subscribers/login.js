@@ -3,14 +3,14 @@ let timer;
 let user;
 let isUser = false;
 
-function checkUser(mobileNumber) {
-    fetch("users.json")
+function isSubscriber(mobileNumber) {
+    fetch("../assets/data/users.json")
         .then(response => response.json())
         .then(users => {
             user = users.find(u => u.mobile_number === mobileNumber);
             if (user) {
-                isUser = true;
                 document.getElementById("error-number").style.display = "none";
+                isUser = true;
             }
         });
 }
@@ -22,7 +22,7 @@ document.getElementById("login-form").addEventListener("submit", function (event
 function sendOTP() {
 
     let mobileNumber = document.getElementById("mobile").value;
-    checkUser(mobileNumber);
+    isSubscriber(mobileNumber);
     if (mobileNumber.length !== 10 || isNaN(mobileNumber) || !isUser) {
         document.getElementById("error-number").style.display = "block";
         document.getElementById("error-number").textContent = "Enter a valid number!";
@@ -54,10 +54,10 @@ function verifyOTP() {
     let enteredOTP = document.getElementById("otp").value;
     if (enteredOTP == generatedOTP) {
         document.getElementById("error-otp").style.display = "none";
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
         checkLoginStatus();
-        let redirectURL = localStorage.getItem("redirectAfterLogin"); 
-        localStorage.removeItem("redirectAfterLogin");
+        let redirectURL = sessionStorage.getItem("redirectAfterLogin"); 
+        sessionStorage.removeItem("redirectAfterLogin");
         Swal.fire({
             icon: 'success',
             title: 'OTP Verified',
@@ -91,7 +91,7 @@ function startTimer() {
     }, 1000);
 }
 function checkLoginStatus() {
-    let user = localStorage.getItem("loggedInUser");
+    let user = sessionStorage.getItem("loggedInUser");
     let loginBtn = document.getElementById("loginBtn");
     let accountBtn = document.getElementById("accountMenu");
 

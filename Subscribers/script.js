@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to Check User Login Status
 function checkLoginStatus() {
-    let user = localStorage.getItem("loggedInUser");
+    let user = sessionStorage.getItem("loggedInUser");
     let loginBtn = document.getElementById("loginBtn");
     let accountBtn = document.getElementById("accountMenu");
 
@@ -33,7 +33,8 @@ function setupLogout() {
     if (logoutBtn) {
         logoutBtn.addEventListener("click", function () {
 
-            localStorage.removeItem("loggedInUser");
+            sessionStorage.removeItem("loggedInUser");
+            sessionStorage.removeItem("rechargeNumber");
             setTimeout(() => {
                 window.location.href = "index.html"; // Redirect to home page
             }, 500);
@@ -42,5 +43,5 @@ function setupLogout() {
 }
 
 function savePageURL() {
-    localStorage.setItem("redirectAfterLogin", window.location.href);
+    sessionStorage.setItem("redirectAfterLogin", window.location.href);
 }

@@ -2,7 +2,7 @@ var plans = [];
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    fetch("plans.json")
+    fetch('../assets/data/plans.json')
         .then(response => response.json()) // Convert response to JSON
         .then(data => {
             plans = data.plans; // Store fetched data in the array
@@ -21,25 +21,30 @@ function filterPlans() {
     let selectedData = Array.from(document.querySelectorAll('#dataFilter input[type="checkbox"]:checked'))
         .map(cb => cb.value);
 
-    console.log(selectedData);
-
     let selectedValidity = Array.from(document.querySelectorAll('#validityFilter input[type="checkbox"]:checked'))
         .map(cb => cb.value);
 
-    console.log(selectedValidity);
+    let filteredPlans;
+    if (selectedData.length == 0 && selectedValidity.length == 0){
+        filteredPlans = plans.filter(plan =>
+            plan.price <= maxPrice
+        );
+    }
+    else{
+        filteredPlans = plans.filter(plan =>
+            plan.price <= maxPrice &&
+            (selectedData.length !== 0 && selectedData.some(data => plan.data.toLowerCase().startsWith(data.toLowerCase()))) ||
+            (selectedValidity.length !== 0 && selectedValidity.some(validity => plan.validity.toLowerCase().startsWith(validity.toLowerCase())))
+        );
+    }
 
-    let filteredPlans = plans.filter(plan =>
-        plan.price <= maxPrice &&
-        (selectedData.length === 0 || selectedData.includes(plan.data)) &&
-        (selectedValidity.length === 0 || selectedValidity.includes(plan.validity))
-    );
-
-    console.log(filteredPlans);
+    console.log("Filtered Plans:", filteredPlans);
     displayFilteredPlans(filteredPlans);
 }
 
+
 function clearFilters() {
-  
+
     let rangeInput = document.getElementById("pricerange");
     rangeInput.value = 2500;
     document.getElementById("rangeValue").innerText = "2500"; // Update displayed value
@@ -49,49 +54,49 @@ function clearFilters() {
         checkbox.checked = false;
     });
 
-    if(document.getElementById("plansContainer").classList.contains("d-none")){
+    if (document.getElementById("plansContainer").classList.contains("d-none")) {
         document.getElementById("plansContainer").classList.remove("d-none");
     }
-    else{
-        if(document.getElementById("popular-plans").classList.contains("d-none")){
+    else {
+        if (document.getElementById("popular-plans").classList.contains("d-none")) {
             document.getElementById("popular-plans").classList.remove("d-none")
         }
-        if(document.getElementById("validity-plans").classList.contains("d-none")){
+        if (document.getElementById("validity-plans").classList.contains("d-none")) {
             document.getElementById("validity-plans").classList.remove("d-none")
         }
-        if(document.getElementById("data-plans").classList.contains("d-none")){
+        if (document.getElementById("data-plans").classList.contains("d-none")) {
             document.getElementById("data-plans").classList.remove("d-none")
         }
-        if(document.getElementById("unlimited-plans").classList.contains("d-none")){
+        if (document.getElementById("unlimited-plans").classList.contains("d-none")) {
             document.getElementById("unlimited-plans").classList.remove("d-none")
         }
     }
-    
+
     // Re-display all plans (You may need to refetch or re-render them)
     displayPlans(plans);
     document.getElementById("clear").classList.add("d-none");
 }
 
-function displayFilteredPlans(filteredPlans){
+function displayFilteredPlans(filteredPlans) {
 
-    if(document.getElementById("plansContainer").classList.contains("d-none")){
+    if (document.getElementById("plansContainer").classList.contains("d-none")) {
         document.getElementById("plansContainer").classList.remove("d-none");
     }
-    else{
-        if(document.getElementById("popular-plans").classList.contains("d-none")){
+    else {
+        if (document.getElementById("popular-plans").classList.contains("d-none")) {
             document.getElementById("popular-plans").classList.remove("d-none")
         }
-        if(document.getElementById("validity-plans").classList.contains("d-none")){
+        if (document.getElementById("validity-plans").classList.contains("d-none")) {
             document.getElementById("validity-plans").classList.remove("d-none")
         }
-        if(document.getElementById("data-plans").classList.contains("d-none")){
+        if (document.getElementById("data-plans").classList.contains("d-none")) {
             document.getElementById("data-plans").classList.remove("d-none")
         }
-        if(document.getElementById("unlimited-plans").classList.contains("d-none")){
+        if (document.getElementById("unlimited-plans").classList.contains("d-none")) {
             document.getElementById("unlimited-plans").classList.remove("d-none")
         }
     }
-   
+
 
     let allPlans = document.getElementById("all-plan-cards");
     let popular = document.getElementById("popular-plan-cards");
@@ -108,7 +113,7 @@ function displayFilteredPlans(filteredPlans){
 
     console.log(filteredPlans)
 
-    if(filteredPlans.length == 0){
+    if (filteredPlans.length == 0) {
         document.getElementById("plansContainer").classList.add("d-none");
         return;
     }
@@ -144,20 +149,20 @@ function displayFilteredPlans(filteredPlans){
         if (plan.category === "Data") data_plans.appendChild(card);
         if (plan.category === "Unlimited") unlimited.appendChild(card);
 
-       
-        if(popular.children.length == 0){
+
+        if (popular.children.length == 0) {
             document.getElementById("popular-plans").classList.add("d-none");
         }
-        if(validity.children.length == 0){
+        if (validity.children.length == 0) {
             document.getElementById("validity-plans").classList.add("d-none");
         }
-        if(data_plans.children.length == 0){
+        if (data_plans.children.length == 0) {
             document.getElementById("data-plans").classList.add("d-none");
         }
-        if(unlimited.children.length == 0){
+        if (unlimited.children.length == 0) {
             document.getElementById("unlimited-plans").classList.add("d-none");
         }
-       
+
     });
 }
 function displayPlans(plans) {
@@ -223,13 +228,23 @@ function showDetails(plan) {
 }
 
 function confirmPayment(plan) {
-    document.getElementById("planPrice").textContent = plan.price;
-    document.getElementById("planValidity").textContent = plan.validity;
-    document.getElementById("planData").textContent = plan.data;
-    document.getElementById("planAmount").textContent = plan.price;
 
-    var myModal = new bootstrap.Modal(document.getElementById('payConfirmation'));
-    myModal.show();
+    if (document.getElementById("rechargeNumber").value === "") {
+        document.getElementById("error-number").classList.remove("d-none");
+        document.getElementById("error-number").innerText = "Recharge Number is Required!";
+    }
+    else {
+        localStorage.setItem("rechargePlan", JSON.stringify(plan));
+        document.getElementById("error-number").classList.add("d-none");
+        document.getElementById("planPrice").textContent = plan.price;
+        document.getElementById("planValidity").textContent = plan.validity;
+        document.getElementById("planData").textContent = plan.data;
+        document.getElementById("planAmount").textContent = plan.price;
+
+        var myModal = new bootstrap.Modal(document.getElementById('payConfirmation'));
+        myModal.show();
+    }
+
 
 }
 

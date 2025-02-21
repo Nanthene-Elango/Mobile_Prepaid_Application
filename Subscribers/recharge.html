@@ -29,11 +29,11 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top"
         style="box-shadow: 1px 2px 10px rgb(198, 198, 198);">
         <div class="container-fluid" id="navbarContainer">
-            
+
         </div>
     </nav>
 
-    <section class="d-flex flex-column flex-lg-row" style="height: 800px;">
+    <section class="d-flex flex-column flex-lg-row">
 
         <aside class="col-lg-4" style="background-color: rgb(0, 32, 96);">
             <div class="container-fluid d-flex flex-column align-items-center text-center content p-5 mb-5"
@@ -42,20 +42,76 @@
                 <p class="pb-5">
                     fast , secure and hassel free recharges
                 </p>
-                <span class="mb-5 d-flex recharge-number">
-                    <div class="mx-2 input-box" style="background-color: white;">
-                        <span class="prefix ps-2">+91</span>
-                        <input type="tel" name="rechargeNumber" id="rechargeNumber" placeholder="Mobile Number">
+                <div class=" d-flex recharge-number">
+                    <span class="d-flex flex-column me-1">
+                        <div class="input-box" style="background-color: white;">
+                            <span class="prefix ps-2">+91</span>
+                            <input type="tel" name="rechargeNumber" id="rechargeNumber" placeholder="Mobile Number">
+                        </div>
+                        <div id="error-number" class="text-danger d-none"></div>
+                    </span>
+                    <div>
+                        <button class="btn btn-success d-none" id="saveBtn" onclick="saveNumber()">save</button>
+                        <button class="btn btn-primary" id="changeBtn" onclick="changeNumber()">Change</button>
                     </div>
-                    <button class="btn btn-primary">Change</button>
-                </span>
+                </div>
             </div>
         </aside>
 
-        <main class="col-lg-8 d-flex flex-column justify-content-center align-items-center"
+        <main class="col-lg-8 d-flex pt-5 flex-column justify-content-center align-items-center"
             style="background-color: aliceblue;">
 
-            <h2 class="my-5 mx-2 mt-lg-0  text-center">Explore Our Exclusive Recharge Plans!</h2>
+            <h2 class="my-5 mx-2 mt-0 mt-md-3  text-center">Explore Our Exclusive Recharge Plans!</h2>
+
+            <div id="planCarousel" class="carousel slide col-10 col-md-8 my-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- First Plan (Active by Default) -->
+                    <div class="carousel-item active">
+                        <div class="card text-center p-4 d-flex align-items-center"
+                            style=" background-color: rgb(0, 32, 96); color: aliceblue;">
+                            <h3>Unlimited Pack</h3>
+                            <h4>Rs.299</h4>
+                            <p>Validity: 28 Days</p>
+                            <p>Unlimited Calls + 1.5GB/Day</p>
+                            <button class="btn btn-primary col-6 col-lg-4">Recharge Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Second Plan -->
+                    <div class="carousel-item">
+                        <div class="card text-center p-4 d-flex align-items-center"
+                            style="background-color: rgb(0, 32, 96); color: aliceblue;">
+                            <h3>Data Booster</h3>
+                            <h4>Rs.149</h4>
+                            <p>Validity: 14 Days</p>
+                            <p>4GB Additional Data</p>
+                            <button class="btn btn-primary col-6 col-lg-4">Recharge Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Third Plan -->
+                    <div class="carousel-item">
+                        <div class="card text-center p-4 d-flex align-items-center"
+                            style="background-color: rgb(0, 32, 96); color: aliceblue;">
+                            <h3>Long-Term Pack</h3>
+                            <h4>Rs.599</h4>
+                            <p>Validity: 84 Days</p>
+                            <p>2GB/Day + Unlimited Calls</p>
+                            <button class="btn btn-primary col-6 col-lg-4">Recharge Now</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#planCarousel" data-bs-slide="prev">
+                    <i class="fa fa-chevron-left text-light"></i>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#planCarousel" data-bs-slide="next">
+                    <i class="fa fa-chevron-right text-light"></i>
+                </button>
+            </div>
 
             <nav id="plans-nav">
                 <ul class="nav nav-pills mt-3 plans-category">
@@ -79,14 +135,16 @@
             </nav>
 
 
-            <div class="col-10 d-flex justify-content-end m-4 px-5">
-                <a onclick="clearFilters()" class="text-decoration-none text-muted me-1 d-none" id="clear"><i class="fa-solid fa-x"></i> clear filter</a>
-                <a onclick = "showFilters()" class="text-decoration-none" id="filter"><i class="fas fa-filter"></i> filter plans</a>
+            <div class="col-10 d-flex justify-content-end my-2">
+                <a onclick="clearFilters()" class="text-decoration-none text-muted mx-1 d-none" id="clear"><i
+                        class="fa-solid fa-x"></i> clear filter</a>
+                <a onclick="showFilters()" class="text-decoration-none me-5" id="filter"><i class="fas fa-filter"></i> filter
+                    plans</a>
             </div>
 
             <div class="container-fluid col-sm-10 overflow-auto" style="height: 500px;position: relative;">
 
-            
+
                 <div data-bs-spy="scroll" data-bs-target="#plans-nav" data-bs-offset="0" tabindex="0"
                     class="scrollspy-example" id="plansContainer">
                     <div class="card m-md-4 my-4 plans" id="all-plans">
@@ -134,7 +192,7 @@
                         </div>
                     </div>
 
-            </div>
+                </div>
         </main>
 
     </section>
@@ -147,41 +205,43 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-end d-none">
-                        <a class="text-secondary text-decoration-none me-2"><i class="fa-solid fa-x"></i> Clear filter</a>
-                     </div>
-                     <div class="container mb-5">
-                         <label for="pricerange" class="form-label"><strong>Choose Price Range:</strong></label><br>
-                         <input type="range" class="form-range w-75" id="pricerange" min="0" max="5000" step="100" value="2500"
-                             oninput="rangeValue.innerText = this.value">
-                         <p>Maximum Price: Rs.<span id="rangeValue">2500</span></p>
-                     </div>
-                     
-                     <div class="container mb-5">
-                         <label for="dataFilter"><strong>Data: </strong></label>
-                         <div class="d-flex flex-wrap" id="dataFilter">
-                             <span class="p-1"><input type="checkbox" id="1GB" value="1GB"> 1GB</span>
-                             <span class="p-1"><input type="checkbox" id="1.5GB" value="1.5GB"> 1.5GB</span>
-                             <span class="p-1"><input type="checkbox" id="2GB" value="2GB"> 2GB</span>
-                             <span class="p-1"><input type="checkbox" id="2.5GB" value="2.5GB"> 2.5GB</span>
-                             <span class="p-1"><input type="checkbox" id="3GB" value="3GB"> 3GB</span>
-                             <span class="p-1"><input type="checkbox" id=">3GB" value=">3GB"> >3GB</span>
-                         </div>
-                     </div>
-     
-                     <div class="container mb-5">
-                         <label for="validityFilter"><strong>Validity: </strong></label>
-                         <div class="d-flex flex-wrap" id="validityFilter">
-                             <span class="p-1"><input type="checkbox" id="1day" value="1 day"> 1 day</span>
-                             <span class="p-1"><input type="checkbox" id="28days" value="28 days"> 28 days</span>
-                             <span class="p-1"><input type="checkbox" id="30days" value="30 days"> 30 days</span>
-                             <span class="p-1"><input type="checkbox" id="56days" value="56 days"> 56 days</span>
-                             <span class="p-1"><input type="checkbox" id="86days" value="84 days"> 84 days</span>
-                             <span class="p-1"><input type="checkbox" id="365days" value="365 days"> 365 days</span>
-                         </div>
-                     </div>
+                        <a class="text-secondary text-decoration-none me-2"><i class="fa-solid fa-x"></i> Clear
+                            filter</a>
+                    </div>
+                    <div class="container mb-5">
+                        <label for="pricerange" class="form-label"><strong>Choose Price Range:</strong></label><br>
+                        <input type="range" class="form-range w-75" id="pricerange" min="0" max="5000" step="100"
+                            value="2500" oninput="rangeValue.innerText = this.value">
+                        <p>Maximum Price: Rs.<span id="rangeValue">2500</span></p>
+                    </div>
+
+                    <div class="container mb-5">
+                        <label for="dataFilter"><strong>Data: </strong></label>
+                        <div class="d-flex flex-wrap" id="dataFilter">
+                            <span class="p-1"><input type="checkbox" id="1GB" value="1GB"> 1GB</span>
+                            <span class="p-1"><input type="checkbox" id="1.5GB" value="1.5GB"> 1.5GB</span>
+                            <span class="p-1"><input type="checkbox" id="2GB" value="2GB"> 2GB</span>
+                            <span class="p-1"><input type="checkbox" id="2.5GB" value="2.5GB"> 2.5GB</span>
+                            <span class="p-1"><input type="checkbox" id="3GB" value="3GB"> 3GB</span>
+                            <span class="p-1"><input type="checkbox" id="10GB" value="10GB"> 10GB</span>
+                        </div>
+                    </div>
+
+                    <div class="container mb-5">
+                        <label for="validityFilter"><strong>Validity: </strong></label>
+                        <div class="d-flex flex-wrap" id="validityFilter">
+                            <span class="p-1"><input type="checkbox" id="1 day" value="1 day"> 1 day</span>
+                            <span class="p-1"><input type="checkbox" id="28 days" value="28 days"> 28 days</span>
+                            <span class="p-1"><input type="checkbox" id="30 days" value="30 days"> 30 days</span>
+                            <span class="p-1"><input type="checkbox" id="56 days" value="56 days"> 56 days</span>
+                            <span class="p-1"><input type="checkbox" id="86 days" value="84 days"> 84 days</span>
+                            <span class="p-1"><input type="checkbox" id="365 days" value="365 days"> 365 days</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="filterPlans()">Apply Filter</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="filterPlans()">Apply
+                        Filter</button>
                 </div>
             </div>
         </div>
@@ -194,7 +254,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center" id="planBenefits">
-                    <h4  id="price"></h4>
+                    <h4 id="price"></h4>
                     <span class="me-5"><i class="fas fa-clock-rotate-left me-1"></i><span id="validity"></span></span>
                     <span><i class="fas fa-wifi me-1"></i><span id="data"></span></span>
                     <h6 class="mt-3"><strong>Additional Benefits</strong></h6>
@@ -213,40 +273,36 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitle">Payment Summary</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="removePlan()"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex justify-content-center">
-                        <div><strong>Price: </strong></div>
-                        <div id="planPrice"></div>
+                    <div class="d-flex justify-content-between">
+                        <strong>Price:</strong> <span id="planPrice"></span>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <div><strong>Data: </strong></div>
-                        <div id="planData"></div>
+
+                    <div class="d-flex justify-content-between">
+                        <strong>Data:</strong> <span id="planData"></span>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <div><strong>Validity: </strong></div>
-                        <div id="planValidity"></div>
+
+                    <div class="d-flex justify-content-between">
+                        <strong>Validity:</strong> <span id="planValidity"></span>
                     </div>
+
                     <hr>
-                    <div class="d-flex justify-content-center">
-                        <div><strong>Amount Payable: </strong></div>
-                        <div id="planAmount"></div>
+
+                    <div class="d-flex justify-content-between">
+                        <strong>Amount Payable:</strong> <span id="planAmount"></span>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
-                    <!-- <input type="button" class="btn btn-outline-primary" data-bs-dismiss="model" value="cancel"> -->
+
                     <a href="./payment.html"><input type="button" class="btn btn-primary" data-bs-dismiss="model"
                             value="Proceed to Pay"></a>
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
 </body>
 
 </html>

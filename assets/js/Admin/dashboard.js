@@ -1,7 +1,7 @@
 let plansData = [];
 let categories = ["Data", "Validity", "Unlimited", "Popular"]; // Default categories
 
-fetch('plans.json')
+fetch('../assets/data/plans.json')
     .then(response => response.json())
     .then(data => {
         plansData = data.plans;
