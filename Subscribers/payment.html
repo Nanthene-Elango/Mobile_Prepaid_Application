@@ -187,6 +187,7 @@
 
             document.getElementById("backBtn").addEventListener("click", () => {
                 localStorage.removeItem("rechargePlans");
+                window.location.href = './recharge.html';
             })
         })
 
@@ -253,6 +254,8 @@
                 }
                 else {
                     setTimeout(() => {
+                localStorage.removeItem("rechargePlans");
+
                         window.location.href = "./index.html";
                     }, 3000);
 
@@ -283,6 +286,7 @@
         }
         function redirect() {
             setTimeout(() => {
+                localStorage.removeItem("rechargePlans");
                 window.location.href = "./index.html";
             }, 1000);
         }

@@ -38,6 +38,22 @@
       "email_id": "nanthene@gmail.com",
       "dob": "2005-12-05",
       "address": "123 , new town street ,Toronto , Canada "
+    },
+    {
+      "id": 6,
+      "name": "SakthiSowmya",
+      "mobile_number": "9876543211",
+      "email_id": "sakthisowmya@gmail.com",
+      "dob": "2005-12-30",
+      "address": "123 , new town street ,Toronto , Canada "
+    },
+    {
+      "id": 7,
+      "name": "Effathjan",
+      "mobile_number": "9170701086",
+      "email_id": "effathjans@gmail.com",
+      "dob": "2002-02-02",
+      "address": "123 , new town street ,Toronto , Canada "
     }
   ]
   

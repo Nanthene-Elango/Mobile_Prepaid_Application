@@ -1,18 +1,24 @@
 let generatedOTP;
 let timer;
 let user;
-let isUser = false;
+let rechargeUsers;
+
+document.addEventListener("DOMContentLoaded" , function(){
+    fetch('../assets/data/users.json')
+    .then(response => response.json())
+    .then(users => {
+        rechargeUsers = users;
+    })
+})
 
 function isSubscriber(mobileNumber) {
-    fetch("../assets/data/users.json")
-        .then(response => response.json())
-        .then(users => {
-            user = users.find(u => u.mobile_number === mobileNumber);
-            if (user) {
-                document.getElementById("error-number").style.display = "none";
-                isUser = true;
-            }
-        });
+   for (let a in rechargeUsers){
+    if(rechargeUsers[a].mobile_number === mobileNumber){
+        user = rechargeUsers[a];
+        return true;
+    }
+   }
+   return false;
 }
 
 document.getElementById("login-form").addEventListener("submit", function (event) {
@@ -22,31 +28,35 @@ document.getElementById("login-form").addEventListener("submit", function (event
 function sendOTP() {
 
     let mobileNumber = document.getElementById("mobile").value;
-    isSubscriber(mobileNumber);
-    if (mobileNumber.length !== 10 || isNaN(mobileNumber) || !isUser) {
-        document.getElementById("error-number").style.display = "block";
-        document.getElementById("error-number").textContent = "Enter a valid number!";
+    
+    if (isSubscriber(mobileNumber)) {
+
+        console.log("noerror");
+        document.getElementById("error-number").style.display = "none";
+        generatedOTP = Math.floor(100000 + Math.random() * 900000);
+        // alert("Your OTP is: " + generatedOTP);
+        let toast = document.getElementById("toast");
+        toast.innerHTML = "Your OTP: " + generatedOTP;
+        toast.classList.add("show");
+
+        // Hide toast after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+
+        document.getElementById("otpSection").style.display = "block";
+        document.getElementById("sendOtpBtn").disabled = true;
+        document.getElementById("resendBtn").disabled = true;
+        startTimer();
         return;
     }
-    else {
-        document.getElementById("error-number").style.display = "none"
+    else{
+        console.log("error");
+        document.getElementById("error-number").style.display = "block";
+        document.getElementById("error-number").textContent = "Enter a valid number!";
+        document.getElementById("mobile").value = "";
+        return;
     }
-
-    generatedOTP = Math.floor(100000 + Math.random() * 900000);
-    // alert("Your OTP is: " + generatedOTP);
-    let toast = document.getElementById("toast");
-    toast.innerHTML = "Your OTP: " + generatedOTP;
-    toast.classList.add("show");
-
-    // Hide toast after 3 seconds
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 4000);
-
-    document.getElementById("otpSection").style.display = "block";
-    document.getElementById("sendOtpBtn").disabled = true;
-    document.getElementById("resendBtn").disabled = true;
-    startTimer();
 }
 
 function verifyOTP() {
@@ -56,7 +66,7 @@ function verifyOTP() {
         document.getElementById("error-otp").style.display = "none";
         sessionStorage.setItem("loggedInUser", JSON.stringify(user));
         checkLoginStatus();
-        let redirectURL = sessionStorage.getItem("redirectAfterLogin"); 
+        let redirectURL = sessionStorage.getItem("redirectAfterLogin");
         sessionStorage.removeItem("redirectAfterLogin");
         Swal.fire({
             icon: 'success',
